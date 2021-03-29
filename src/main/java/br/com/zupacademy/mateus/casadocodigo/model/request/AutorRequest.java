@@ -5,6 +5,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.Unique;
 import br.com.zupacademy.mateus.casadocodigo.model.Autor;
 
 /**
@@ -18,7 +19,7 @@ public class AutorRequest {
 	
 	@NotBlank
 	private String nome;
-	@NotBlank @Email
+	@NotBlank @Email @Unique(fieldName = "email", entityClass = Autor.class, message = "Email deve ser único")
 	private String email;
 	@NotBlank @Size(max = 400)
 	private String descricao;
