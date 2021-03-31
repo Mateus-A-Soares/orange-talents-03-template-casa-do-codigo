@@ -9,7 +9,6 @@ import br.com.zupacademy.mateus.casadocodigo.model.Categoria;
  * Classe modelo que representa os dados nas requests de cadastro de categorias
  * 
  * @author Mateus Soares
- *
  */
 public class CategoriaRequest {
 

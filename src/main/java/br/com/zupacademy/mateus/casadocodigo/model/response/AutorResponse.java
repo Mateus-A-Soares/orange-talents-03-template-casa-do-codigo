@@ -9,7 +9,6 @@ import br.com.zupacademy.mateus.casadocodigo.model.Autor;
  * Classe modelo que representa o envio de dados sobre autores pela API
  * 
  * @author Mateus Soares
- *
  */
 public class AutorResponse {
 
