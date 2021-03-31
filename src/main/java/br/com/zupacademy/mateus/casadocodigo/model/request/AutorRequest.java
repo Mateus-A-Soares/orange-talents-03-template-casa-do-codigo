@@ -12,7 +12,7 @@ import br.com.zupacademy.mateus.casadocodigo.model.Autor;
  * 
  * Classe modelo que representa os dados nas requests de cadastro de autores
  * 
- * @author mateussoares
+ * @author Mateus Soares
  *
  */
 public class AutorRequest {
