@@ -15,8 +15,16 @@ public class CategoriaRequest {
 	@NotBlank @Unique(fieldName = "nome", entityClass = Categoria.class, message = "Nome deve ser único")
 	private String nome;
 	
+	@Deprecated
+	public CategoriaRequest() {
+	}
+	
 	public CategoriaRequest(String nome) {
 		this.nome = nome;
+	}
+	
+	public String getNome() {
+		return nome;
 	}
 
 	public Categoria toModel() {
