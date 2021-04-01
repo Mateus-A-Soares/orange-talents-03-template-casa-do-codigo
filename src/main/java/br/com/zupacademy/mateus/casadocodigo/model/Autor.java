@@ -34,7 +34,7 @@ public class Autor {
 	@NotBlank
 	private String nome;
 	
-	@Column(nullable = false)
+	@Column(unique = true, nullable = false)
 	@NotBlank @Email
 	private String email;
 	

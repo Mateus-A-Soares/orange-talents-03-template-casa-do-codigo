@@ -20,7 +20,6 @@ import br.com.zupacademy.mateus.casadocodigo.model.response.CategoriaResponse;
  * Controller com os end-points relacionados ao CRUD da entidade Categoria.
  * 
  * @author Mateus Soares
- *
  */
 @RestController
 @RequestMapping("/categorias")

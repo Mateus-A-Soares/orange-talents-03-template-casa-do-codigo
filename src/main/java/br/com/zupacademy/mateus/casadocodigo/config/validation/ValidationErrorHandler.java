@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
- * Hander que captura exceptions lançadas durante a execução dos end-points e modifica a resposta.
+ * Handler que captura exceptions lançadas durante a execução dos end-points e modifica a resposta.
  * 
  * @author Mateus Soares
  */

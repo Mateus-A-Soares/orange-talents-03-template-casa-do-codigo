@@ -26,8 +26,8 @@ public class UniqueValidator implements ConstraintValidator<Unique, Object> {
 		Query query = manager.createQuery("SELECT 1 FROM " + entityName + " o WHERE o." + fieldName + " = :value");
 		query.setParameter("value", value);
 		return query.getResultList().isEmpty();
-		
 	}
+	
 	@Override
 	public void initialize(Unique annotation) {
 		fieldName = annotation.fieldName();
