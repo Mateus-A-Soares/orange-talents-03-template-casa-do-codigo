@@ -1,6 +1,6 @@
 package br.com.zupacademy.mateus.casadocodigo.model.response;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import br.com.zupacademy.mateus.casadocodigo.model.Autor;
 import br.com.zupacademy.mateus.casadocodigo.model.Categoria;
@@ -26,7 +26,7 @@ public class LivroResponse {
 
 	private String isbn;
 
-	private LocalDateTime dataLancamento;
+	private LocalDate dataLancamento;
 
 	private Categoria categoria;
 	
@@ -68,7 +68,7 @@ public class LivroResponse {
 		return isbn;
 	}
 
-	public LocalDateTime getDataLancamento() {
+	public LocalDate getDataLancamento() {
 		return dataLancamento;
 	}
 

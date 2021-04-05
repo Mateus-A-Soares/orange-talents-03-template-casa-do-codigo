@@ -1,6 +1,6 @@
 package br.com.zupacademy.mateus.casadocodigo.model.request;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import javax.persistence.EntityManager;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
@@ -39,9 +39,9 @@ public class LivroRequest {
 	@Unique(entityClass = Livro.class, fieldName = "isbn")
 	private String isbn;
 	
-	@Future
+	@Future @NotNull
 	@JsonFormat(pattern = "dd/MM/yyyy", shape = Shape.STRING)
-	private LocalDateTime dataLancamento;
+	private LocalDate dataLancamento;
 	
 	@NotNull
 	private Long autorId;
@@ -50,7 +50,7 @@ public class LivroRequest {
 	private Long categoriaId;
 
 	public LivroRequest(@NotBlank String titulo, @NotBlank String resumo, @Min(20) Double preco,
-			@Min(100) Integer numeroPaginas, @NotBlank String isbn, @Future LocalDateTime dataLancamento,
+			@Min(100) Integer numeroPaginas, @NotBlank String isbn, @Future LocalDate dataLancamento,
 			@NotNull Long autorId, Long categoriaId) {
 		this.titulo = titulo;
 		this.resumo = resumo;
@@ -82,7 +82,7 @@ public class LivroRequest {
 		return isbn;
 	}
 
-	public LocalDateTime getDataLancamento() {
+	public LocalDate getDataLancamento() {
 		return dataLancamento;
 	}
 

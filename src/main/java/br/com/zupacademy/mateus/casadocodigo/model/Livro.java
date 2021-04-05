@@ -1,6 +1,6 @@
 package br.com.zupacademy.mateus.casadocodigo.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,7 +46,7 @@ public class Livro {
 	private String isbn;
 	
 	@Future
-	private LocalDateTime dataLancamento;
+	private LocalDate dataLancamento;
 	
 	@NotNull
 	@ManyToOne
@@ -57,7 +57,7 @@ public class Livro {
 	private Autor autor;
 
 	public Livro(Long id, @NotBlank String titulo, @NotBlank String resumo, @Min(20) Double preco,
-			@Min(100) Integer numeroPaginas, @NotBlank String isbn, @Future LocalDateTime dataLancamento,
+			@Min(100) Integer numeroPaginas, @NotBlank String isbn, @Future LocalDate dataLancamento,
 			@NotNull Categoria categoria, @NotNull Autor autor) {
 		this.id = id;
 		this.titulo = titulo;
@@ -71,7 +71,7 @@ public class Livro {
 	}
 
 	public Livro(@NotBlank String titulo, @NotBlank String resumo, @Min(20) Double preco,
-			@Min(100) Integer numeroPaginas, @NotBlank String isbn, @Future LocalDateTime dataLancamento,
+			@Min(100) Integer numeroPaginas, @NotBlank String isbn, @Future LocalDate dataLancamento,
 			@NotNull Categoria categoria, @NotNull Autor autor) {
 		this.titulo = titulo;
 		this.resumo = resumo;
@@ -109,7 +109,7 @@ public class Livro {
 		return isbn;
 	}
 
-	public LocalDateTime getDataLancamento() {
+	public LocalDate getDataLancamento() {
 		return dataLancamento;
 	}
 
