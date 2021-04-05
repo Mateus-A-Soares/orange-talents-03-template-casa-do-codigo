@@ -114,7 +114,8 @@ public class Livro {
 		this.categoria = categoria;
 		this.autor = autor;
 	}
-	
+
+	@Deprecated
 	public Livro() {}
 
 	public Long getId() {
