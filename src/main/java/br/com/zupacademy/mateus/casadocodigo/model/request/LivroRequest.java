@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
+import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.ExistsOne;
 import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.Unique;
 import br.com.zupacademy.mateus.casadocodigo.model.Autor;
 import br.com.zupacademy.mateus.casadocodigo.model.Categoria;
@@ -44,9 +45,11 @@ public class LivroRequest {
 	private LocalDate dataLancamento;
 	
 	@NotNull
+	@ExistsOne(entityTargetClass = Autor.class, fieldTargetName = "id")
 	private Long autorId;
 	
 	@NotNull
+	@ExistsOne(entityTargetClass = Categoria.class, fieldTargetName = "id")
 	private Long categoriaId;
 
 	public LivroRequest(@NotBlank String titulo, @NotBlank String resumo, @Min(20) Double preco,
