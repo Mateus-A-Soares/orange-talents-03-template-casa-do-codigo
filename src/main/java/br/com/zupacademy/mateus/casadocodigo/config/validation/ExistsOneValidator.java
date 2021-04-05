@@ -9,7 +9,7 @@ import javax.validation.ConstraintValidatorContext;
 import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.ExistsOne;
 
 /**
- * Implementação do validator que executa a validação de unicidade para campos de entidades JPA.
+ * Implementação do validator que executa a validação de existência nos parâmetros que representam chaves estrangeiras de entidades JPA.
  * 
  * @author Mateus Soares
  */

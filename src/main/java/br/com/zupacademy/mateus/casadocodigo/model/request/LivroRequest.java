@@ -52,6 +52,17 @@ public class LivroRequest {
 	@ExistsOne(entityTargetClass = Categoria.class, fieldTargetName = "id")
 	private Long categoriaId;
 
+	/**
+	 * Construtor que instância um objeto LivrorRequest com os dados representativos da entidade livro.
+	 * 
+	 * @param titulo titulo do livro, não nulo ou vazio e único;
+	 * @param resumo titulo do livro, não nulo ou vazio e único;
+	 * @param preco preço do livro, no mínimo 20.0;
+	 * @param numeroPaginas numero de paginas do livro, no mínimo 100;
+	 * @param isbn código identificador do livro, não nulo ou vazio mas de formato livre;
+	 * @param autorId id do autor do livro, não pode estar vazio e deve ser um registro existente;
+	 * @param categoriaId id da categoria do livro, não pode estar vazio e deve ser um registro existente;
+	 */
 	public LivroRequest(@NotBlank String titulo, @NotBlank String resumo, @Min(20) Double preco,
 			@Min(100) Integer numeroPaginas, @NotBlank String isbn,
 			@NotNull Long autorId, Long categoriaId) {
@@ -100,6 +111,11 @@ public class LivroRequest {
 		this.dataLancamento = dataLancamento;
 	}
 	
+	/**
+	 * Transforma o objeto LivroRequest em um objeto Livro.
+	 * 
+	 * @return objeto Livro populado com os dados desse objeto.
+	 */
 	public Livro toModel(EntityManager entityManager) {
 		Autor autor = entityManager.find(Autor.class, autorId);
 		Categoria categoria = entityManager.find(Categoria.class, categoriaId);

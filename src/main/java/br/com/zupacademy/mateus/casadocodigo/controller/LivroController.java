@@ -29,10 +29,7 @@ public class LivroController {
 	private EntityManager manager;
 	
 	/**
-	 * End-point de URL /livros - Recebe um objeto JSON no corpo da
-	 * requisição, que representa um livro a ser cadastrado, valida
-	 * e tenta persistir, se o processo ocorrer com sucesso retorna
-	 * o status 200 com o livro cadastrado no corpo da resposta.
+	 * End-point de URL /livros que realiza a validação e cadastro do registro de um livro.
 	 * 
 	 * @param livroRequest livro a ser cadastrado.
 	 * @return ResponseEntity representando o status HTTP 200, 400 ou 500.

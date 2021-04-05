@@ -20,7 +20,6 @@ import br.com.zupacademy.mateus.casadocodigo.model.response.AutorResponse;
  * Controller com os end-points relacionados ao CRUD da entidade Autor.
  * 
  * @author Mateus Soares
- *
  */
 @RestController
 @RequestMapping("/autores")
@@ -30,10 +29,7 @@ public class AutorController {
 	private EntityManager manager;
 	
 	/**
-	 * End-point de URL /autores - Recebe um objeto JSON no corpo da
-	 * requisição, que representa um autor a ser cadastrado, valida
-	 * e tenta persistir, se o processo ocorrer com sucesso retorna
-	 * o status 200 com o autor cadastrado no corpo da resposta.
+	 * End-point de URL /autores que realiza a validação e cadastro do registro de um autor.
 	 * 
 	 * @param autorRequest autor a ser cadastrado.
 	 * @return ResponseEntity representando o status HTTP 200, 400 ou 500.

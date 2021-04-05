@@ -8,7 +8,7 @@ import br.com.zupacademy.mateus.casadocodigo.model.Livro;
 
 /**
  * 
- * Classe modelo que representa o envio de dados sobre livros pela API
+ * Classe modelo que encapsula os dados a serem enviados sobre livros pela API
  * 
  * @author Mateus Soares
  */
@@ -32,6 +32,11 @@ public class LivroResponse {
 	
 	private Autor autor;
 
+	/**
+	 * Instância o objeto e popula com os dados encapsulados no livro recebido.
+	 * 
+	 * @param livro livro encapsulando os dados do registro.
+	 */
 	public LivroResponse(Livro livro) {
 		this.id = livro.getId();
 		this.titulo = livro.getTitulo();

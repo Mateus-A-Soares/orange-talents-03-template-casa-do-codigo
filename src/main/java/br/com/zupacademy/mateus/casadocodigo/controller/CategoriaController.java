@@ -29,10 +29,7 @@ public class CategoriaController {
 	private EntityManager manager;
 	
 	/**
-	 * End-point de URL /categorias - Recebe um objeto JSON no corpo da
-	 * requisição, que representa uma categoria a ser cadastrada, valida
-	 * e tenta persistir, se o processo ocorrer com sucesso retorna
-	 * o status 200 com a categoria cadastrada no corpo da resposta.
+	 * End-point de URL /categorias que realiza a validação e cadastro do registro de uma categoria.
 	 * 
 	 * @param categoriaRequest categoria a ser cadastrada.
 	 * @return ResponseEntity representando o status HTTP 200, 400 ou 500.

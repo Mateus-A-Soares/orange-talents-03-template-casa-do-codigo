@@ -6,7 +6,7 @@ import br.com.zupacademy.mateus.casadocodigo.model.Autor;
 
 /**
  * 
- * Classe modelo que representa o envio de dados sobre autores pela API
+ * Classe modelo que encapsula os dados a serem enviados sobre autores pela API
  * 
  * @author Mateus Soares
  */
@@ -22,6 +22,11 @@ public class AutorResponse {
 
 	private String descricao;
 
+	/**
+	 * Instância o objeto e popula com os dados encapsulados no autor recebido.
+	 * 
+	 * @param autor autor encapsulando os dados do registro.
+	 */
 	public AutorResponse(Autor autor) {
 		this.id = autor.getId();
 		this.instanteCadastro = autor.getInstanteCadastro();

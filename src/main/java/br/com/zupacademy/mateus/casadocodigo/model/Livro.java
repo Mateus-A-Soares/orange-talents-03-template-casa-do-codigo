@@ -46,6 +46,7 @@ public class Livro {
 	private String isbn;
 	
 	@Future
+	@NotNull
 	private LocalDate dataLancamento;
 	
 	@NotNull
@@ -56,8 +57,21 @@ public class Livro {
 	@ManyToOne
 	private Autor autor;
 
-	public Livro(Long id, @NotBlank String titulo, @NotBlank String resumo, @Min(20) Double preco,
-			@Min(100) Integer numeroPaginas, @NotBlank String isbn, @Future LocalDate dataLancamento,
+	/**
+	 * Construtor que instância um objeto Livro com os dados representativos do registro de um livro.
+	 * 
+     * @param id id do livro, não nulo;
+	 * @param titulo titulo do livro, não nulo ou vazio e único;
+	 * @param resumo titulo do livro, não nulo ou vazio e único;
+	 * @param preco preço do livro, no mínimo 20.0;
+	 * @param numeroPaginas numero de paginas do livro, no mínimo 100;
+	 * @param isbn código identificador do livro, não nulo ou vazio mas de formato livre;
+	 * @param dataLancamento data de lançamento do livro, não nula e necessariamente no futuro; 
+	 * @param categoriaId id da categoria do livro, não pode estar vazio e deve ser um registro existente;
+	 * @param autorId id do autor do livro, não pode estar vazio e deve ser um registro existente;
+	 */
+	public Livro(@NotNull Long id, @NotBlank String titulo, @NotBlank String resumo, @Min(20) Double preco,
+			@Min(100) Integer numeroPaginas, @NotBlank String isbn, @Future @NotNull LocalDate dataLancamento,
 			@NotNull Categoria categoria, @NotNull Autor autor) {
 		this.id = id;
 		this.titulo = titulo;
@@ -70,6 +84,18 @@ public class Livro {
 		this.autor = autor;
 	}
 
+	/**
+	 * Construtor que instância um objeto Livro com os dados representativos do registro de um livro.
+	 * 
+	 * @param titulo titulo do livro, não nulo ou vazio e único;
+	 * @param resumo titulo do livro, não nulo ou vazio e único;
+	 * @param preco preço do livro, no mínimo 20.0;
+	 * @param numeroPaginas numero de paginas do livro, no mínimo 100;
+	 * @param isbn código identificador do livro, não nulo ou vazio mas de formato livre;
+	 * @param dataLancamento data de lançamento do livro, não nula e necessariamente no futuro; 
+	 * @param categoriaId id da categoria do livro, não pode estar vazio e deve ser um registro existente;
+	 * @param autorId id do autor do livro, não pode estar vazio e deve ser um registro existente;
+	 */
 	public Livro(@NotBlank String titulo, @NotBlank String resumo, @Min(20) Double preco,
 			@Min(100) Integer numeroPaginas, @NotBlank String isbn, @Future LocalDate dataLancamento,
 			@NotNull Categoria categoria, @NotNull Autor autor) {

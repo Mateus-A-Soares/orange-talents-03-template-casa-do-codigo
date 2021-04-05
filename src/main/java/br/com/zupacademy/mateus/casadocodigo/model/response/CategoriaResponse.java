@@ -4,7 +4,7 @@ import br.com.zupacademy.mateus.casadocodigo.model.Categoria;
 
 /**
  * 
- * Classe modelo que representa o envio de dados sobre categorias pela API
+ * Classe modelo que encapsula os dados a serem enviados sobre categorias pela API
  * 
  * @author Mateus Soares
  */
@@ -14,6 +14,11 @@ public class CategoriaResponse {
 
 	private String nome;
 
+	/**
+	 * Instância o objeto e popula com os dados encapsulados na categoria recebido.
+	 * 
+	 * @param categoria categoria encapsulando os dados do registro.
+	 */
 	public CategoriaResponse(Categoria categoria) {
 		this.id = categoria.getId();
 		this.nome = categoria.getNome();
