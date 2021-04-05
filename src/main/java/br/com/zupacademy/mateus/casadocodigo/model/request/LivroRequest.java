@@ -30,6 +30,8 @@ public class LivroRequest {
 	@NotBlank
 	private String resumo;
 	
+	private String sumario;
+	
 	@Min(20)
 	private Double preco;
 	
@@ -63,11 +65,12 @@ public class LivroRequest {
 	 * @param autorId id do autor do livro, não pode estar vazio e deve ser um registro existente;
 	 * @param categoriaId id da categoria do livro, não pode estar vazio e deve ser um registro existente;
 	 */
-	public LivroRequest(@NotBlank String titulo, @NotBlank String resumo, @Min(20) Double preco,
+	public LivroRequest(@NotBlank String titulo, @NotBlank String resumo, String sumario, @Min(20) Double preco,
 			@Min(100) Integer numeroPaginas, @NotBlank String isbn,
 			@NotNull Long autorId, Long categoriaId) {
 		this.titulo = titulo;
 		this.resumo = resumo;
+		this.sumario = sumario;
 		this.preco = preco;
 		this.numeroPaginas = numeroPaginas;
 		this.isbn = isbn;
@@ -81,6 +84,10 @@ public class LivroRequest {
 
 	public String getResumo() {
 		return resumo;
+	}
+	
+	public String getSumario() {
+		return sumario;
 	}
 
 	public Double getPreco() {
@@ -119,6 +126,6 @@ public class LivroRequest {
 	public Livro toModel(EntityManager entityManager) {
 		Autor autor = entityManager.find(Autor.class, autorId);
 		Categoria categoria = entityManager.find(Categoria.class, categoriaId);
-		return new Livro(titulo, resumo, preco, numeroPaginas, isbn, dataLancamento, categoria, autor);
+		return new Livro(titulo, resumo, sumario, preco, numeroPaginas, isbn, dataLancamento, categoria, autor);
 	}
 }

@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.zupacademy.mateus.casadocodigo.model.Livro;
-import br.com.zupacademy.mateus.casadocodigo.model.request.LivroRequest;
-import br.com.zupacademy.mateus.casadocodigo.model.response.LivroResponse;
+import br.com.zupacademy.mateus.casadocodigo.model.Livro; // 1 Ponto de CI
+import br.com.zupacademy.mateus.casadocodigo.model.request.LivroRequest; // 2 Pontos de CI
+import br.com.zupacademy.mateus.casadocodigo.model.response.LivroResponse; // 3 Pontos de CI
 
 /**
  * 
@@ -24,6 +24,8 @@ import br.com.zupacademy.mateus.casadocodigo.model.response.LivroResponse;
 @RestController
 @RequestMapping("/livros")
 public class LivroController {
+	
+	// 4 pontos de Carga Intrínseca 
 
 	@PersistenceContext
 	private EntityManager manager;
@@ -36,7 +38,7 @@ public class LivroController {
 	 */
 	@PostMapping
 	@Transactional
-	public ResponseEntity<LivroResponse> cadastrar(@RequestBody @Valid LivroRequest livroRequest) {
+	public ResponseEntity<LivroResponse> cadastrar(@RequestBody @Valid LivroRequest livroRequest) { // 4 Pontos de CI
 		Livro livro = livroRequest.toModel(manager);
 		manager.persist(livro);
 		return ResponseEntity.ok().body(new LivroResponse(livro));

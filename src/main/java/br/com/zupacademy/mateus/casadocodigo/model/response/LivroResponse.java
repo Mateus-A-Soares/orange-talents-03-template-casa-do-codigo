@@ -19,6 +19,8 @@ public class LivroResponse {
 	private String titulo;
 
 	private String resumo;
+	
+	private String sumario;
 
 	private Double preco;
 
@@ -41,6 +43,7 @@ public class LivroResponse {
 		this.id = livro.getId();
 		this.titulo = livro.getTitulo();
 		this.resumo = livro.getResumo();
+		this.sumario = livro.getSumario();
 		this.preco = livro.getPreco();
 		this.numeroPaginas = livro.getNumeroPaginas();
 		this.isbn = livro.getIsbn();
@@ -59,6 +62,10 @@ public class LivroResponse {
 
 	public String getResumo() {
 		return resumo;
+	}
+	
+	public String getSumario() {
+		return sumario;
 	}
 
 	public Double getPreco() {
