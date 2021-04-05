@@ -20,7 +20,6 @@ import br.com.zupacademy.mateus.casadocodigo.model.response.LivroResponse;
  * Controller com os end-points relacionados ao CRUD da entidade Livro.
  * 
  * @author Mateus Soares
- *
  */
 @RestController
 @RequestMapping("/livros")
