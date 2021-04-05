@@ -82,6 +82,8 @@ public class Livro {
 		this.categoria = categoria;
 		this.autor = autor;
 	}
+	
+	public Livro() {}
 
 	public Long getId() {
 		return id;
