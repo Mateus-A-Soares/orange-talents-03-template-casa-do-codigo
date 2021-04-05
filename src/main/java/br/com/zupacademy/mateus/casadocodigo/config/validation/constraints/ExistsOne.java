@@ -4,25 +4,21 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
-import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import br.com.zupacademy.mateus.casadocodigo.config.validation.UniqueValidator;
-
 /**
- *  Anotação utilizada nas classes que representam entidades, nos parâmetros em que deve ocorrer validação de unicidade 
+ *  Anotação utilizada nas classes que representam entidades, nos parâmetros que representam chaves estrangeiras
+ *  em que deve ocorrer validação de existência na base de dados.
  *  
  * @author Mateus Soares
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = UniqueValidator.class)
-public @interface Unique {
+public @interface ExistsOne {
 	
-	String fieldName();
-	Class<?> entityClass();
-    String message() default "Valor já cadastrado para este campo";
+	String fieldTargetName();
+	Class<?> entityTargetClass();
+    String message() default "Registro não encontrado";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
