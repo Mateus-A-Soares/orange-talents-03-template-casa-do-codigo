@@ -50,14 +50,13 @@ public class LivroRequest {
 	private Long categoriaId;
 
 	public LivroRequest(@NotBlank String titulo, @NotBlank String resumo, @Min(20) Double preco,
-			@Min(100) Integer numeroPaginas, @NotBlank String isbn, @Future LocalDate dataLancamento,
+			@Min(100) Integer numeroPaginas, @NotBlank String isbn,
 			@NotNull Long autorId, Long categoriaId) {
 		this.titulo = titulo;
 		this.resumo = resumo;
 		this.preco = preco;
 		this.numeroPaginas = numeroPaginas;
 		this.isbn = isbn;
-		this.dataLancamento = dataLancamento;
 		this.categoriaId = categoriaId;
 		this.autorId = autorId;
 	}
@@ -92,6 +91,10 @@ public class LivroRequest {
 
 	public Long getAutorId() {
 		return autorId;
+	}
+	
+	public void setDataLancamento(LocalDate dataLancamento) {
+		this.dataLancamento = dataLancamento;
 	}
 	
 	public Livro toModel(EntityManager entityManager) {
