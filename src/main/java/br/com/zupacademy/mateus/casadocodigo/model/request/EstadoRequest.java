@@ -1,49 +1,42 @@
 package br.com.zupacademy.mateus.casadocodigo.model.request;
 
 import javax.persistence.EntityManager;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.Valid;
 
-import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.ExistsOne;
+import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.ExistsOnePaisOnEstadoId;
+import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.UniqueEstadoId;
 import br.com.zupacademy.mateus.casadocodigo.model.Estado;
 import br.com.zupacademy.mateus.casadocodigo.model.EstadoId;
 import br.com.zupacademy.mateus.casadocodigo.model.Pais;
 
 /**
  * 
- * Classe modelo que representa os dados nas requests de cadastro de estadoes
+ * Classe modelo que representa os dados nas requests de cadastro de estados
  * 
  * @author Mateus Soares
  */
 public class EstadoRequest {
-
-	@NotNull @NotBlank
-	private String nome;
 	
-	@NotNull
-	@ExistsOne(entityTargetClass = Pais.class, fieldTargetName = "id")
-	private Long paisId;
+	@UniqueEstadoId
+	@ExistsOnePaisOnEstadoId
+	@Valid
+	private EstadoIdRequest estado;
 
 	@Deprecated
 	public EstadoRequest() {
 	}
 	
 	/**
-	 * Construtor que instância um objeto EstadoRequest com os dados representativos da entidade estado.
+	 * Construtor que instância um objeto EstadoRequest com os dados representativos da chave composta nome - paisId.
 	 * 
-	 * @param nome nome do estado, único, não nulo ou vazio;
+	 * @param estado objeto representativo da chave composta.
 	 */
-	public EstadoRequest(@NotNull @NotBlank String nome, Long paisId) {
-		this.nome = nome;
-		this.paisId = paisId;
+	public EstadoRequest(EstadoIdRequest estado) {
+		this.estado = estado;
 	}
 	
-	public String getNome() {
-		return nome;
-	}
-	
-	public Long getPaisId() {
-		return paisId;
+	public EstadoIdRequest getEstado() {
+		return estado;
 	}
 
 	/**
@@ -52,8 +45,8 @@ public class EstadoRequest {
 	 * @return objeto Estado populado com os dados desse objeto.
 	 */
 	public Estado toModel(EntityManager manager) {
-		Pais pais = manager.find(Pais.class, paisId);
-		return new Estado(new EstadoId(nome, pais));
+		Pais pais = manager.find(Pais.class, estado.getPaisId());
+		return new Estado(new EstadoId(estado.getNome(), pais));
 	}
 }
 
