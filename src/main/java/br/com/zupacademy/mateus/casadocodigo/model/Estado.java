@@ -1,7 +1,9 @@
 package br.com.zupacademy.mateus.casadocodigo.model;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.Valid;
 
 /**
@@ -13,20 +15,37 @@ import javax.validation.Valid;
 @Entity
 public class Estado {
 	
-	@EmbeddedId
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
 	@Valid
-	private EstadoId estadoId;
+	private EstadoParameters estadoParameters;
+	
+	/**
+	 * Instância um Estado, populado com os dados representativos de um registro.
+	 * 
+	 * @param estadoId objeto representativo dos parâmetros da entidade Est.
+	 */
+	public Estado(Long id, EstadoParameters estadoId) {
+		this.id = id;
+		this.estadoParameters = estadoId;
+	}
 
 	/**
 	 * Instância um Estado, populado com os dados representativos de um registro.
 	 * 
 	 * @param estadoId objeto representativo da chave primária composta nome - país.
 	 */
-	public Estado(EstadoId estadoId) {
-		this.estadoId = estadoId;
+	public Estado(EstadoParameters estadoParameters) {
+		this.estadoParameters = estadoParameters;
 	}
 
-	public EstadoId getEstadoId() {
-		return estadoId;
+	public EstadoParameters getEstadoParameters() {
+		return estadoParameters;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 }

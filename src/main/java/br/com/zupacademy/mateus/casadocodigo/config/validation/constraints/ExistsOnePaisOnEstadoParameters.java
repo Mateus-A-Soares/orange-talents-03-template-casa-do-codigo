@@ -8,19 +8,20 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import br.com.zupacademy.mateus.casadocodigo.config.validation.UniqueEstadoIdValidator;
+import br.com.zupacademy.mateus.casadocodigo.config.validation.ExistsOnePaisOnEstadoParametersValidator;
 
 /**
- *  Anotação utilizada na classe EstadoRequest, para validação de unicidade do campo EstadoId que
- * representa a chave primária composta nome - país.
+ *  Anotação utilizada na classe EstadoRequest para verificar existência do país enviado pela requisição
+ *  no parâmetro EstadoParametersRequest.
  *  
  * @author Mateus Soares
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = UniqueEstadoIdValidator.class)
-public @interface UniqueEstadoId {
-	String message() default "Chave duplicada";
+@Constraint(validatedBy = ExistsOnePaisOnEstadoParametersValidator.class)
+public @interface ExistsOnePaisOnEstadoParameters {
+
+    String message() default "País não encontrado";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

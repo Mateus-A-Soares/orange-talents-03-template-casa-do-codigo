@@ -3,10 +3,10 @@ package br.com.zupacademy.mateus.casadocodigo.model.request;
 import javax.persistence.EntityManager;
 import javax.validation.Valid;
 
-import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.ExistsOnePaisOnEstadoId;
-import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.UniqueEstadoId;
+import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.ExistsOnePaisOnEstadoParameters;
+import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.UniqueEstadoParameters;
 import br.com.zupacademy.mateus.casadocodigo.model.Estado;
-import br.com.zupacademy.mateus.casadocodigo.model.EstadoId;
+import br.com.zupacademy.mateus.casadocodigo.model.EstadoParameters;
 import br.com.zupacademy.mateus.casadocodigo.model.Pais;
 
 /**
@@ -17,25 +17,25 @@ import br.com.zupacademy.mateus.casadocodigo.model.Pais;
  */
 public class EstadoRequest {
 	
-	@UniqueEstadoId
-	@ExistsOnePaisOnEstadoId
+	@UniqueEstadoParameters
+	@ExistsOnePaisOnEstadoParameters
 	@Valid
-	private EstadoIdRequest estado;
+	private EstadoParametersRequest estado;
 
 	@Deprecated
 	public EstadoRequest() {
 	}
 	
 	/**
-	 * Construtor que instância um objeto EstadoRequest com os dados representativos da chave composta nome - paisId.
+	 * Construtor que instância um objeto EstadoRequest com os dados representativos da entidade Estado.
 	 * 
-	 * @param estado objeto representativo da chave composta.
+	 * @param estado objeto representativo dos parâmetros da entidade Estado.
 	 */
-	public EstadoRequest(EstadoIdRequest estado) {
+	public EstadoRequest(EstadoParametersRequest estado) {
 		this.estado = estado;
 	}
 	
-	public EstadoIdRequest getEstado() {
+	public EstadoParametersRequest getEstado() {
 		return estado;
 	}
 
@@ -46,7 +46,7 @@ public class EstadoRequest {
 	 */
 	public Estado toModel(EntityManager manager) {
 		Pais pais = manager.find(Pais.class, estado.getPaisId());
-		return new Estado(new EstadoId(estado.getNome(), pais));
+		return new Estado(new EstadoParameters(estado.getNome(), pais));
 	}
 }
 

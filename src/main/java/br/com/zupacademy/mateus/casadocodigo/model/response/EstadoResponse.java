@@ -1,7 +1,7 @@
 package br.com.zupacademy.mateus.casadocodigo.model.response;
 
 import br.com.zupacademy.mateus.casadocodigo.model.Estado;
-import br.com.zupacademy.mateus.casadocodigo.model.EstadoId;
+import br.com.zupacademy.mateus.casadocodigo.model.EstadoParameters;
 
 /**
  * 
@@ -10,6 +10,8 @@ import br.com.zupacademy.mateus.casadocodigo.model.EstadoId;
  * @author Mateus Soares
  */
 public class EstadoResponse {
+	
+	private Long id;
 
 	private String nome;
 	
@@ -21,9 +23,10 @@ public class EstadoResponse {
 	 * @param estado estado encapsulando os dados do registro.
 	 */
 	public EstadoResponse(Estado estado) {
-		EstadoId estadoId = estado.getEstadoId();
-		this.nome = estadoId.getNome();
-		this.pais = new PaisResponse(estadoId.getPais());
+		EstadoParameters estadoParameters = estado.getEstadoParameters();
+		this.id = estado.getId();
+		this.nome = estadoParameters.getNome();
+		this.pais = new PaisResponse(estadoParameters.getPais());
 	}
 
 	public String getNome() {
@@ -32,5 +35,9 @@ public class EstadoResponse {
 	
 	public PaisResponse getPais() {
 		return pais;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 }

@@ -6,14 +6,15 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
- * Classe representativa da chave primária composta (que compões os dois únicos atributos) da entidade Estado
+ * Classe representativa dos parâmetros da entidade Estado
  * 
  * @author Mateus Soares
  */
 @Embeddable
-public class EstadoId implements Serializable {
+public class EstadoParameters implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -21,19 +22,20 @@ public class EstadoId implements Serializable {
 	@Column(nullable = false)
 	private String nome;
 	
-	@ManyToOne
+	@NotNull
+	@ManyToOne(optional = false)
 	private Pais pais;
 	
 	@Deprecated
-	public EstadoId() {}
+	public EstadoParameters() {}
 	
 	/**
-	 * Instância uma chave primária composta para o registro da entidade Estado.
+	 * Instância um objeto EstadoParameters com os valores representativos de um registro da entidade Estado.
 	 * 
 	 * @param nome nome do estado a ser cadastrado;
 	 * @param pais registro do país ao qual o estado pertence.
 	 */
-	public EstadoId(String nome, Pais pais) {
+	public EstadoParameters(String nome, Pais pais) {
 		this.nome = nome;
 		this.pais = pais;
 	}
