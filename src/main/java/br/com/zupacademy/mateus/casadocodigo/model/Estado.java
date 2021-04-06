@@ -24,7 +24,7 @@ public class Estado {
 	@NotBlank
 	private String nome;
 	
-	@NotBlank
+	@NotNull
 	@ManyToOne
 	private Pais pais;
 

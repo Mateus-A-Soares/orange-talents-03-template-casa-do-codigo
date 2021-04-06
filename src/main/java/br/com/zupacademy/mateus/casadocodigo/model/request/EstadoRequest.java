@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.ExistsOne;
 import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.Unique;
 import br.com.zupacademy.mateus.casadocodigo.model.Estado;
 import br.com.zupacademy.mateus.casadocodigo.model.Pais;
@@ -20,6 +21,7 @@ public class EstadoRequest {
 	private String nome;
 	
 	@NotNull
+	@ExistsOne(entityTargetClass = Pais.class, fieldTargetName = "id")
 	private Long paisId;
 
 	@Deprecated
@@ -38,6 +40,10 @@ public class EstadoRequest {
 	
 	public String getNome() {
 		return nome;
+	}
+	
+	public Long getPaisId() {
+		return paisId;
 	}
 
 	/**

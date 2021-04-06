@@ -42,6 +42,10 @@ public class Pais {
 	public Pais(@NotBlank String nome) {
 		this.nome = nome;
 	}
+	
+	@Deprecated
+	public Pais() {
+	}
 
 	public Long getId() {
 		return id;
