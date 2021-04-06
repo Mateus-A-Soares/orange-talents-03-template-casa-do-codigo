@@ -5,8 +5,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.ExistsOne;
-import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.Unique;
 import br.com.zupacademy.mateus.casadocodigo.model.Estado;
+import br.com.zupacademy.mateus.casadocodigo.model.EstadoId;
 import br.com.zupacademy.mateus.casadocodigo.model.Pais;
 
 /**
@@ -17,7 +17,7 @@ import br.com.zupacademy.mateus.casadocodigo.model.Pais;
  */
 public class EstadoRequest {
 
-	@NotNull @NotBlank @Unique(fieldName = "nome", entityClass = Estado.class, message = "Nome deve ser único")
+	@NotNull @NotBlank
 	private String nome;
 	
 	@NotNull
@@ -53,6 +53,7 @@ public class EstadoRequest {
 	 */
 	public Estado toModel(EntityManager manager) {
 		Pais pais = manager.find(Pais.class, paisId);
-		return new Estado(nome, pais);
+		return new Estado(new EstadoId(nome, pais));
 	}
 }
+
