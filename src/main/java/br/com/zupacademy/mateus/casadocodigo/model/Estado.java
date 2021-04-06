@@ -40,6 +40,9 @@ public class Estado {
 	public Estado(EstadoParameters estadoParameters) {
 		this.estadoParameters = estadoParameters;
 	}
+	
+	@Deprecated
+	public Estado() {}
 
 	public EstadoParameters getEstadoParameters() {
 		return estadoParameters;
