@@ -63,7 +63,6 @@ public class Cliente {
 	@ManyToOne(optional = false)
     private Pais pais;
     
-	@NotBlank
 	@ManyToOne
     private Estado estado;
 
@@ -85,7 +84,7 @@ public class Cliente {
 	 */
 	public Cliente(Long id, @Email @NotBlank String email, @NotBlank String nome, @NotBlank String sobrenome,
 			@NotBlank String documento, @NotBlank String telefone, @NotBlank String cep, @NotBlank String endereco,
-			@NotBlank String complemento, @NotBlank String cidade, @NotNull Pais pais, @NotBlank Estado estado) {
+			@NotBlank String complemento, @NotBlank String cidade, @NotNull Pais pais, Estado estado) {
 		this.id = id;
 		this.email = email;
 		this.nome = nome;
