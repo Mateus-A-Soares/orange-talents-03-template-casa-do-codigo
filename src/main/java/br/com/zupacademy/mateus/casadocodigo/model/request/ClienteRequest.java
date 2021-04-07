@@ -6,6 +6,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.CpfCnpj;
+import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.EstadoOnPais;
 import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.Unique;
 import br.com.zupacademy.mateus.casadocodigo.model.Cliente;
 
@@ -36,6 +37,7 @@ public class ClienteRequest {
     private String telefone;
 	
 	@Valid
+	@EstadoOnPais
 	private ClienteLocalizacaoResquest localizacao;
 
 	/**
