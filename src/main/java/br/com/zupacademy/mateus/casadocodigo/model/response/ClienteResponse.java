@@ -1,6 +1,7 @@
 package br.com.zupacademy.mateus.casadocodigo.model.response;
 
 import br.com.zupacademy.mateus.casadocodigo.model.Cliente;
+import br.com.zupacademy.mateus.casadocodigo.model.ClienteLocalizacao;
 import br.com.zupacademy.mateus.casadocodigo.model.Estado;
 import br.com.zupacademy.mateus.casadocodigo.model.Pais;
 
@@ -42,18 +43,19 @@ public class ClienteResponse {
 	 * @param cliente objeto cliente encapsulando os dados do registro
 	 */
 	public ClienteResponse(Cliente cliente) {
+		ClienteLocalizacao localizacao = cliente.getClienteLocalizacao();
 		this.id = cliente.getId();
 		this.email = cliente.getEmail();
 		this.nome = cliente.getNome();
 		this.sobrenome = cliente.getSobrenome();
 		this.documento = cliente.getDocumento();
 		this.telefone = cliente.getTelefone();
-		this.cep = cliente.getCep();
-		this.endereco = cliente.getEndereco();
-		this.complemento = cliente.getComplemento();
-		this.cidade = cliente.getCidade();
-		this.pais = cliente.getPais();
-		this.estado = cliente.getEstado();
+		this.cep = localizacao.getCep();
+		this.endereco = localizacao.getEndereco();
+		this.complemento = localizacao.getComplemento();
+		this.cidade = localizacao.getCidade();
+		this.pais = localizacao.getPais();
+		this.estado = localizacao.getEstado();
 	}
 
 	public Long getId() {
