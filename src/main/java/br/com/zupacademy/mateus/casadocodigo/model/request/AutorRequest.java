@@ -22,6 +22,7 @@ public class AutorRequest {
 	private String email;
 	@NotBlank @Size(max = 400)
 	private String descricao;
+
 	private LocalDateTime instanteCadastro;
 	
 	/**

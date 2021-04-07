@@ -5,6 +5,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.CpfCnpj;
+import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.ExistsOne;
+import br.com.zupacademy.mateus.casadocodigo.config.validation.constraints.Unique;
 import br.com.zupacademy.mateus.casadocodigo.model.Cliente;
 import br.com.zupacademy.mateus.casadocodigo.model.Estado;
 import br.com.zupacademy.mateus.casadocodigo.model.Pais;
@@ -18,6 +21,7 @@ import br.com.zupacademy.mateus.casadocodigo.model.Pais;
 public class ClienteRequest {
 	
 	@Email @NotBlank
+	@Unique(entityClass = Cliente.class, fieldName = "email")
     private String email;
     
 	@NotBlank
@@ -27,6 +31,8 @@ public class ClienteRequest {
     private String sobrenome;
     
 	@NotBlank
+	@Unique(entityClass = Cliente.class, fieldName = "documento")
+	@CpfCnpj
     private String documento;
     
 	@NotBlank
@@ -45,9 +51,9 @@ public class ClienteRequest {
     private String cidade;
     
 	@NotNull
+	@ExistsOne(entityTargetClass = Pais.class, fieldTargetName = "id")
     private Long paisId;
     
-	@NotNull
     private Long estadoId;
 
 	/**
@@ -67,7 +73,7 @@ public class ClienteRequest {
 	 */
 	public ClienteRequest(@Email @NotBlank String email, @NotBlank String nome, @NotBlank String sobrenome,
 			@NotBlank String documento, @NotBlank String telefone, @NotBlank String cep, @NotBlank String endereco,
-			@NotBlank String complemento, @NotBlank String cidade, @NotNull Long paisId, @NotNull Long estadoId) {
+			@NotBlank String complemento, @NotBlank String cidade, @NotNull Long paisId, Long estadoId) {
 		super();
 		this.email = email;
 		this.nome = nome;
